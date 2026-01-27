@@ -27,17 +27,17 @@ class Team(Base):
     )
 
     team_name: Mapped[str] = mapped_column(
-        String(10),
+        String(100),
         nullable=False,
     )
 
     conference: Mapped[str | None] = mapped_column(
-        String(10),
+        String(20),
         nullable=True,
     )
 
     division: Mapped[str | None] = mapped_column(
-        String(20),
+        String(30),
         nullable=True,
     )
 
