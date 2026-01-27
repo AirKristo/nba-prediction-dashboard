@@ -3,7 +3,8 @@ from pydantic_settings import BaseSettings, SettingsConfigDict
 
 class Settings(BaseSettings):
     # Database configuration
-    database_url: str = "postgresql://nba_user:nba_password@localhost:5432/nba_predictions"
+    database_url: str = "postgresql+psycopg://nba_user:nba_password@localhost:5432/nba_predictions"
+
 
     # Application environment
     environment: str = "development"  # development, staging, production
@@ -28,7 +29,8 @@ class Settings(BaseSettings):
     model_config = SettingsConfigDict(
         env_file=".env",
         env_file_encoding="utf-8",
-        case_sensitive=False,  # DATABASE_URL and database_url both work
+        case_sensitive=False,
+        protected_namespaces=("settings_",),
     )
 
 @lru_cache
